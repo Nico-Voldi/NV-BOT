@@ -1,7 +1,17 @@
 const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
-const config = require('./config.json');
+const config = {
+  token: process.env.TOKEN,
+  clientId: process.env.CLIENT_ID,
+  guildId: process.env.GUILD_ID,
+  prefix: '!',
+  welcomeChannelId: process.env.WELCOME_CHANNEL_ID,
+  guideChannelId: process.env.GUIDE_CHANNEL_ID,
+  rolesChannelId: process.env.ROLES_CHANNEL_ID,
+  introChannelId: process.env.INTRO_CHANNEL_ID,
+  rulesChannelId: process.env.RULES_CHANNEL_ID
+};
 
 const client = new Client({
   intents: [
@@ -220,3 +230,4 @@ client.on('interactionCreate', async interaction => {
 
 
 client.login(config.token);
+
